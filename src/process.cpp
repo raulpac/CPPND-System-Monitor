@@ -34,9 +34,9 @@ string Process::Command() { return LinuxParser::Command(pid_); }
 string Process::Ram() { 
     
     std::string mem = LinuxParser::Ram(pid_); 
-    float a = std::stoi(mem)/1024;
-    int b=a;
-    return mem = to_string(b);
+    long a = atol(mem.c_str())/1024;
+    return to_string(a);
+
 }
 
 // TODO: Return the user (name) that generated this process
