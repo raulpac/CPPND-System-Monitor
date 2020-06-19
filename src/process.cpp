@@ -48,5 +48,5 @@ long int Process::UpTime() { return (LinuxParser::UpTime()-LinuxParser::UpTime(p
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 bool Process::operator<(Process const& a) const { 
-  return std::stoi(a.ram_) < std::stoi(ram_); 
+  return std::atoi(a.ram_.c_str()) < std::atoi(ram_.c_str()); 
 }
