@@ -4,7 +4,6 @@
 #include <vector>
 #include <iostream>
 #include <unistd.h>
-#include <sstream>
 
 #include "linux_parser.h"
 
@@ -117,10 +116,7 @@ long LinuxParser::Jiffies() { return 0; }
 long LinuxParser::ActiveJiffies(int pid) { 
   string line;
   string x;
-  int utime=0;
-  int stime=0;
-  int cutime=0;
-  int cstime=0;
+  int utime, stime, cutime, cstime = 0;
 
   std::ifstream stream(kProcDirectory+std::to_string(pid)+kStatFilename);
 
@@ -129,7 +125,7 @@ long LinuxParser::ActiveJiffies(int pid) {
     std::getline(stream, line);
     std::istringstream linestream(line);
 
-    for (int i=0; i < 22; i++)
+    for (int i=0; i < 23; i++)
     {
       linestream >> x;
       if (i == 12)

@@ -36,7 +36,6 @@ string Process::Ram() {
     std::string mem = LinuxParser::Ram(pid_); 
     long a = atol(mem.c_str())/1024;
     return to_string(a);
-
 }
 
 // TODO: Return the user (name) that generated this process
@@ -48,5 +47,5 @@ long int Process::UpTime() { return (LinuxParser::UpTime()-LinuxParser::UpTime(p
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 bool Process::operator<(Process const& a) const { 
-  return std::atoi(a.ram_.c_str()) < std::atoi(ram_.c_str()); 
+  return std::stoi(a.ram_) < std::stoi(ram_); 
 }
