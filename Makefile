@@ -6,7 +6,7 @@ format:
 	clang-format src/* include/* -i
 
 .PHONY: build
-build:
+build:g++
 	mkdir -p build
 	cd build && \
 	cmake .. && \

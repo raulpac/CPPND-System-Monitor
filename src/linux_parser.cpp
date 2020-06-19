@@ -129,7 +129,7 @@ long LinuxParser::ActiveJiffies(int pid) {
     std::getline(stream, line);
     std::istringstream linestream(line);
 
-    for (int i=0; i < 23; i++)
+    for (int i=0; i < 22; i++)
     {
       linestream >> x;
       if (i == 12)
@@ -308,7 +308,7 @@ long LinuxParser::UpTime(int pid) {
       linestream >> token;
       a++;
     }
-    return stol(token)/sysconf(_SC_CLK_TCK);
+    return atol(token.c_str())/sysconf(_SC_CLK_TCK);
   }
   return -1;
 
