@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <unistd.h>
-
+#include <algorithm>
 #include "linux_parser.h"
 
 using std::cout;
@@ -61,7 +61,13 @@ vector<int> LinuxParser::Pids() {
       string filename(file->d_name);
       if (std::all_of(filename.begin(), filename.end(), isdigit)) {
         int pid = stoi(filename);
-        pids.push_back(pid);
+        if(std::count(pids.begin(),pids.end(),pid)){
+          continue;
+        }else{
+          pids.push_back(pid);
+        }
+        
+        
       }
     }
   }

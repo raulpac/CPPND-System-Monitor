@@ -21,9 +21,7 @@ float Process::CpuUtilization() {
     float totalUsageTime = totalTimeJiffs/sysconf(_SC_CLK_TCK);
     float totalTime = LinuxParser::UpTime() - LinuxParser::UpTime(pid_)/sysconf(_SC_CLK_TCK);
     float cpuUsage = (totalUsageTime - TUsageTime_)/(totalTime - TTime_);
-    CpuProc_ = cpuUsage;
-    TUsageTime_ = totalUsageTime;
-    TTime_ = totalTime;
+   
     return cpuUsage;
 }
 
